@@ -1,3 +1,4 @@
+
 import { useState } from "react"
 
 function AddTodo({updateList}) {
@@ -9,7 +10,8 @@ function AddTodo({updateList}) {
             value={inputText}
             onChange={e => setInputText(e.target.value)}
             />
-            <button onClick={() => updateList(inputText)}>ADD</button>
+            <button onClick={() =>  {updateList(inputText) ;     
+                 setInputText('')}}>ADD</button>
         </div>
     )
 }
