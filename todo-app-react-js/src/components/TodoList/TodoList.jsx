@@ -8,26 +8,16 @@ function TodoList() {
     const {list} = useContext(TodoContext)
 const {dispatch} = useContext(TodoDispatchContext)
     function onFinished(todo ,isFinished) {
-    const updatedList = list.map(t =>{
-        if (t.id == todo.id) {
-            todo.finished = isFinished
-        }
-        return t 
-        })   
-        setList(updatedList)
+        dispatch({type : "finish_todo" , payload : {todo , isFinished : isFinished}})
+
    }
    function onDelete(todo) {
     dispatch({type : "delete_todo" , payload : {todo}})
 
    }
    function onEdit(todo , todoText) {
-    const updatedList = list.map(t =>{
-        if (t.id == todo.id) {
-            todo.tododata = todoText
-        }
-        return t 
-   })
-        setList(updatedList)
+    dispatch({type : "edit_todo" , payload : {todo , todoText}})
+
    }
 return (
 <div>

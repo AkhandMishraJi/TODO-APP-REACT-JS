@@ -7,7 +7,7 @@ function todoReducer(state , action) {
     } else if (action.type == "edit_todo") {
         let todo = action.payload.todo
         let todoText = action.payload.todoText
-        const updatedList = list.map(t =>{
+        const updatedList = state.map(t =>{
             if (t.id == todo.id) {
                 todo.tododata = todoText
             }
@@ -18,6 +18,16 @@ function todoReducer(state , action) {
         let todo = action.payload.todo
         const updatedList = state.filter(t => t.id !== todo.id) 
 return updatedList
-    }
+    } else if (action.type == 'finish_todo'){
+        let todo = action.payload.todo
+       let isFinished = true
+        const updatedList = state.map(t =>{
+            if (t.id == todo.id) {
+                todo.finished = isFinished
+            }
+            return t 
+            })   
+        return updatedList 
+        } else state
 }
 export default todoReducer
