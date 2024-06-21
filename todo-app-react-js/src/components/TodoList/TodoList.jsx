@@ -2,11 +2,12 @@
 import { useContext } from "react"
 import Todo from "../Todo/Todo"
 import TodoContext from "../../context/TodoContext";
+import TodoDispatchContext from "../../context/TodoDispatchContext";
 
 function TodoList() {
-    const {list , setList} = useContext(TodoContext)
-
-   function onFinished(todo ,isFinished) {
+    const {list} = useContext(TodoContext)
+const {dispatch} = useContext(TodoDispatchContext)
+    function onFinished(todo ,isFinished) {
     const updatedList = list.map(t =>{
         if (t.id == todo.id) {
             todo.finished = isFinished
@@ -16,8 +17,8 @@ function TodoList() {
         setList(updatedList)
    }
    function onDelete(todo) {
-    const updatedList = list.filter(t => t.id !== todo.id) 
-                    setList(updatedList)
+    dispatch({type : "delete_todo" , payload : {todo}})
+
    }
    function onEdit(todo , todoText) {
     const updatedList = list.map(t =>{
