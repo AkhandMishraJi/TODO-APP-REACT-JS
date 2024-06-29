@@ -1,5 +1,5 @@
 import { createStore , combineReducers} from 'redux'
- import { todoReducer } from "./components/reducers/todoReducer";
+ import todoReducer from "./components/reducers/todoReducer";
 
  const reducers = combineReducers({todo : todoReducer})
  const store = createStore(reducers)

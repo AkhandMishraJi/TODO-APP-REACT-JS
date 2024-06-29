@@ -1,7 +1,7 @@
 function todoReducer(state = [] , action) {
     if (action.type == "add_todo") {
         let todoText = action.payload.todoText
-        return[
+        return [
             ...state , { id : state.length+1 ,tododata : todoText , finished : false}
         ]
     } else if (action.type == "edit_todo") {
@@ -28,6 +28,6 @@ return updatedList
             return t 
             })   
         return updatedList 
-        } else state
+        } else return state
 }
 export default todoReducer
