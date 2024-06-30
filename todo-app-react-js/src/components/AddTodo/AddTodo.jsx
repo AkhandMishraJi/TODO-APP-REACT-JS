@@ -1,20 +1,17 @@
-import { addTodo } from "../../actions/todoActions"
 import {  useState } from "react"
-import {useDispatch} from "react-redux"
-function AddTodo() {
-   const dispatch = useDispatch()
+function AddTodo({addTodo}) {
    const [inputText , setInputText] = useState('')
     return (
         <div>
             <input type="text" 
-            placeholder="ADD TODO FOR YOUR NEXT WORK"
+            placeholder="ADD TODO "
             value={inputText}
             id="text"
             onChange={e => setInputText(e.target.value)}
             />
             <button onClick={() =>  {
          
-                dispatch(addTodo(inputText))
+                addTodo(inputText)
                    
                  setInputText('')}}>ADD</button>
         </div>
